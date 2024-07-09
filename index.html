@@ -5,11 +5,20 @@
 <head>
     <title>nutriouschild</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="script.js"></script>
+        
 </head>
 <body>
+<div class="image-container">
+
+  
+<h1  id="i1"> Happy Faces<br> Big Changes</h1>
+<img src="./data/schild.jpg">
+
+  
+</div>
+
     <div class="container">
-      
+        <form id ="myForm">
         <h1>Enter your details</h1>
       <label for="file-upload" class="custom-file-upload">
     Upload Image of your child
@@ -19,7 +28,7 @@
 
 
 
-        <form>
+      
             <input type="text" name="name" placeholder="Name">
             <input type="text" name="age" placeholder="Age">
                
@@ -44,8 +53,9 @@
     </select>
             <input type="text" name="weight" placeholder="Weight">
             <input type="text" name="height" placeholder="Height in cms">
-            <button  onclick=submit()><a href="/predict.html"> Submit</button>
+            <button  type="submit"> Submit</button>
         </form>
+        <script src="script.js"></script>
         
     </div>
 </body>

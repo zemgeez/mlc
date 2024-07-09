@@ -1,37 +1,55 @@
 
-function submit() {
 
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.querySelector('form');
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Example: Fetch all form data
-            const formData = new FormData(form);
-            for (let [key, value] of formData.entries()) {
-                console.log(key, value);
-
-
-            }
-
-        });
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('#myForm'); 
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        submit(form); 
     });
+});
+ 
+
+              function submit(form){ 
+    const formData = new FormData(form);
+    let hasData = false;
+    for (let [key, value] of formData.entries()) {
+        console.log(key, value);
+        hasData = true; 
+    }
+
+    if (hasData) {
+        console.log("Form data submitted. Redirecting to /predict.html...");
+     
+        window.location.href = "/predict.html";
+                  }
+    else {
+        window.alert("retry");
+                  }
 }
+
 
 function download() {
     window.print();
 }
-
 function showreport() {
     var x = document.getElementById("report");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        document.getElementById("showreport").innerHTML = "Hide Report";
+    var reportButton = document.getElementById("showreport");
+
+    if (x.style.display === "none" || x.style.display === "") {
+
+        reportButton.innerHTML = "Generating Report...";
+        
+        setTimeout(() => {
+            x.style.display = "block";
+            reportButton.innerHTML = "Hide Report";
+        }, 2000); 
+
+        // setting up some inner function 
+
     } else {
         x.style.display = "none";
-        document.getElementById("showreport").innerHTML = "Show Report";
+        reportButton.innerHTML = "Show Report";
     }   
 }
 
@@ -80,48 +98,3 @@ function handleFileUpload(event) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Optionally, send the form data using fetch() or another AJAX method
-        // Example:
-        // fetch('your-endpoint', {
-        //     method: 'POST',
-        //     body: formData,
-        // }).then(response => {
-        //     if (response.ok) {
-        //         return response.json();
-        //     }
-        //     throw new Error('Network response was not ok.');
-        // }).then(data => {
-        //     console.log(data);
-        // }).catch(error => {
-        //     console.error('There has been a problem with your fetch operation:', error);
-        // });
